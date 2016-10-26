@@ -3,6 +3,6 @@
 To run the current tests:
 
 ~~~
-pip install lettuce
-lettuce
+pip install behave
+behave
 ~~~
