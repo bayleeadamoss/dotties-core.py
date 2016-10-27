@@ -1,0 +1,22 @@
+Working tree problem:
+If we have 3 projects that are linked together, during a `dotties update` the
+second one fails it could leave the user in a weird state and possibly unable to
+use their editor of choice (vim obviously).
+
+To fix this, we need to ensure a fetch/merge will work correctly on each repo
+before we do an actual merge, as described by this pseudo code:
+
+~~~
+if ! git fetch origin
+  fail
+else
+  if dirty_branch?
+    fail
+  else
+    rm -rf ../.test_merge_dir
+    git worktree add -b test ../.test_merge_dir
+    if git merge
+      success
+    else
+      fail
+~~~

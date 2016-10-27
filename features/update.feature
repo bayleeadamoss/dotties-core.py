@@ -19,6 +19,15 @@ Feature: Update
     Then I should see the new version of "blainesch/dotties"
     And I should see the new version of "amjith/dotties"
 
+  Scenario: Updating when a package has modifications
+    Given an old version of "blainesch/dotties" installed
+    And an old version of "amjith/dotties" installed
+    And I make a modification to "amjith/dotties"
+    When I type "dotties update"
+    Then I should see a prompt to telling us "amjith/dotties" is dirty
+    And I should see the old version of "amjith/dotties"
+    And I should see the old version of "blainesch/dotties"
+
   Scenario: Updating a specific dotfile doesn't upate all dotties
     Given an old version of "blainesch/dotties" installed
     And an old version of "amjith/dotties" installed
