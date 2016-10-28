@@ -2,8 +2,8 @@ Feature: Core
 
   Scenario: Dotties without any arguments
     When I type "dotties"
-    Then I should see the "help" screen
+    Then I see the "help" screen
 
-  Scenario: Sudo dotties should not do anything
+  Scenario: Sudo dotties fails for everything
     When I type "sudo dotties"
-    Then I should see the "sudo of shame" screen
+    Then I see the "sudo of shame" screen
